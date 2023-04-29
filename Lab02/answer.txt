@@ -1,0 +1,1 @@
+Java does not allow us to do that because these two constructor methods have same name (DigitalVideoDisc) , same number of arguments (1), same types of arguments (String) and then the program can not determine which purpose a customer choose a DVD (by title or category).   
