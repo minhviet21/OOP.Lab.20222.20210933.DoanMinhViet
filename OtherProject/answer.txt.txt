@@ -1,0 +1,6 @@
+Answer:
+
+If we are taking the Comparable interface approach, the class whose objects need to be compared needs to implement the Comparable interface.
+In those classes, we should implement the compareTo() method in a way that reflects the ordering that we want. For example, if we are comparing books, we could implement the compareTo() method to compare the titles of the books, and if the titles are equal, we could compare the prices of the books.
+No, we cannot have two ordering rules of the item if we use the Comparable interface approach. The compareTo() method can only return either a positive, negative or zero value to indicate the relative ordering of two objects.
+To allow for a different ordering rule for DVDs, we can create a separate class for DVDs that implements the Comparable interface and override the compareTo() method to reflect the different ordering rule. We could also create a separate Comparator implementation for DVDs to handle the sorting of DVDs in different ways.
