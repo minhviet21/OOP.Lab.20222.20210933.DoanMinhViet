@@ -1,9 +1,13 @@
 package hust.soict.dsai.aims;
 import java.util.Scanner;
+
+import javax.naming.LimitExceededException;
+
 import hust.soict.dsai.aims.store.*;
 import hust.soict.dsai.aims.cart.*;
 import hust.soict.dsai.aims.media.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
 public class Aims {
@@ -89,7 +93,7 @@ public class Aims {
 			int id = scanner.nextInt();
 	    	System.out.println("");
 	    	int count = 0;
-	    	for (Media media : cart.itemsOrder) {
+	    	for (Media media : cart.getItemsOrdered()) {
 	    		if (media.getId() == id) {
 	    			System.out.println(media.toString());
 	    			System.out.println("--------------------------------");
@@ -108,7 +112,7 @@ public class Aims {
 			String title = scanner.nextLine();
 	    	System.out.println("");
 	    	int count = 0;
-	    	for (Media media : cart.itemsOrder) {
+	    	for (Media media : cart.getItemsOrdered()) {
 	    		if (media.getTitle().equals(title)) {
 	    			System.out.println(media.toString());
 	    			System.out.println("--------------------------------");
@@ -121,24 +125,24 @@ public class Aims {
 		}
 	}
 	public static void sortByTitle(Cart cart) {		
-		Collections.sort(cart.itemsOrder, Media.COMPARE_BY_TITLE_COST );
+		Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_TITLE_COST );
 		System.out.println("Sort by title:");
 		System.out.println("--------------------------------");
-		for (Media media : cart.itemsOrder) {
+		for (Media media : cart.getItemsOrdered()) {
 			System.out.println(media.getTitle()+" - "+media.getCost());
 		}
 		System.out.println("--------------------------------");
 	}
 	public static void sortByCost(Cart cart) {
-		Collections.sort(cart.itemsOrder, Media.COMPARE_BY_COST_TITLE );
+		Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_COST_TITLE );
 		System.out.println("Sort by cost:");
 		System.out.println("--------------------------------");
-		for (Media media : cart.itemsOrder) {
+		for (Media media : cart.getItemsOrdered()) {
 			System.out.println(media.getTitle()+" - "+media.getCost());
 		}
 		System.out.println("--------------------------------");
 	}
-	public static void addToCart(Media media, Cart cart) {
+	public static void addToCart(Media media, Cart cart) throws LimitExceededException {
 		cart.addMedia(media);
 		System.out.println("--------------------------------");
 	}
@@ -158,7 +162,7 @@ public class Aims {
 	    }
 	}
 	
-	public static void seeAMediaDetail(Cart cart, Store store) {	
+	public static void seeAMediaDetail(Cart cart, Store store) throws LimitExceededException {	
 		while (true) {
 			System.out.println("Please enter a title");
 			Scanner scanner = new Scanner(System.in);
@@ -191,7 +195,7 @@ public class Aims {
 	   
 		}
 	}
-	public static void addAMediaToCart(Cart cart, Store store) {
+	public static void addAMediaToCart(Cart cart, Store store) throws LimitExceededException {
 		while (true) {
 			System.out.println("Please enter a title");
 			Scanner scanner = new Scanner(System.in);
@@ -245,7 +249,7 @@ public class Aims {
 			int count = 0;
 	    	System.out.println("Current cart:");
 
-	    	for (Media media : cart.itemsOrder) {
+	    	for (Media media : cart.getItemsOrdered()) {
 	    		System.out.println(media.getTitle()+" - "+media.getCost());
 	    		count ++;
 	    	}
@@ -331,7 +335,7 @@ public class Aims {
 			String title = scanner.nextLine();
 	    	System.out.println("");
 	    	int count = 0;
-	    	for (Media media : cart.itemsOrder) {
+	    	for (Media media : cart.getItemsOrdered()) {
 	    		if (media.getTitle().equals(title)) {
 	    			cart.removeMedia(media);
 	    			System.out.println("--------------------------------");
@@ -350,7 +354,7 @@ public class Aims {
 			String title = scanner.nextLine();
 	    	System.out.println("");
 	    	int count = 0;
-	    	for (Media media : cart.itemsOrder) {
+	    	for (Media media : cart.getItemsOrdered()) {
 	    		if (media.getTitle().equals(title)) {
 	    			if (media instanceof DigitalVideoDisc) {
 	    			    DigitalVideoDisc dvd =  (DigitalVideoDisc) media;
@@ -374,13 +378,13 @@ public class Aims {
 		}
 	}
     public static void placeOrder(Cart cart) {
-    	for (Media media : cart.itemsOrder) {
+    	for (Media media : cart.getItemsOrdered()) {
     		cart.removeMedia(media);
     	System.out.println("An order is created and empty the current cart");
     	}
 	}
 	
-	public static void viewStore(Cart cart, Store store) {
+	public static void viewStore(Cart cart, Store store) throws LimitExceededException {
     	while (true) {
     		System.out.println("All medias in store:");
         	System.out.println("--------------------------------");
@@ -420,7 +424,7 @@ public class Aims {
     		}
 		}
 	}
-	public static void main(String[] arg) {
+	public static void main(String[] arg) throws LimitExceededException {
 		Store store = new Store();
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);

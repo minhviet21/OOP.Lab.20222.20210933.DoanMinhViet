@@ -32,4 +32,11 @@ public class Store {
 			System.out.println("Media is not in the list");
 		}
     }
+	public ArrayList<Media> getItemsInStore() {
+		return (ArrayList<Media>) itemsInStore;
+	}
+	
+    public void showFilteredMedia(String newValue) {
+    	
+    }
 }
