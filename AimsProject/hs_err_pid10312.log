@@ -18,7 +18,7 @@
 #     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
 # This output file may be truncated or incomplete.
 #
-#  Out of Memory Error (os_windows.cpp:3559), pid=10624, tid=9880
+#  Out of Memory Error (os_windows.cpp:3559), pid=10312, tid=15948
 #
 # JRE version:  (17.0.7+7) (build )
 # Java VM: OpenJDK 64-Bit Server VM (17.0.7+7, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
@@ -27,16 +27,16 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: --module-path=D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib --add-modules=javafx.controls,javafx.fxml,javafx.swing,javafx.graphics,javafx.web -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages hust.soict.dsai.aims.screen.CartScreen
+Command Line: --module-path=D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib --add-modules=javafx.controls,javafx.fxml,javafx.swing,javafx.graphics,javafx.web -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages hust.soict.dsai.aims.screen.test
 
 Host: Intel(R) Pentium(R) Silver N5000 CPU @ 1.10GHz, 4 cores, 3G,  Windows 11 , 64 bit Build 22621 (10.0.22621.1778)
-Time: Thu Jun 22 17:01:42 2023 SE Asia Standard Time elapsed time: 0.029169 seconds (0d 0h 0m 0s)
+Time: Sat Jul  1 00:28:16 2023 SE Asia Standard Time elapsed time: 0.033541 seconds (0d 0h 0m 0s)
 
 ---------------  T H R E A D  ---------------
 
-Current thread (0x000002ebc9b2c470):  JavaThread "Unknown thread" [_thread_in_vm, id=9880, stack(0x000000eef4400000,0x000000eef4500000)]
+Current thread (0x00000165d3f3ba70):  JavaThread "Unknown thread" [_thread_in_vm, id=15948, stack(0x00000016a6e00000,0x00000016a6f00000)]
 
-Stack: [0x000000eef4400000,0x000000eef4500000]
+Stack: [0x00000016a6e00000,0x00000016a6f00000]
 Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
 V  [jvm.dll+0x67754a]
 V  [jvm.dll+0x834304]
@@ -65,22 +65,22 @@ C  [ntdll.dll+0x5a9f8]
 ---------------  P R O C E S S  ---------------
 
 Threads class SMR info:
-_java_thread_list=0x00007ffd57267018, length=0, elements={
+_java_thread_list=0x00007fff1b967018, length=0, elements={
 }
 
 Java Threads: ( => current thread )
 
 Other Threads:
-  0x000002ebc9b64110 GCTaskThread "GC Thread#0" [stack: 0x000000eef4500000,0x000000eef4600000] [id=11544]
-  0x000002ebc9b6cad0 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000eef4600000,0x000000eef4700000] [id=9108]
-  0x000002ebc9b6dde0 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000eef4700000,0x000000eef4800000] [id=5432]
+  0x00000165d3f76130 GCTaskThread "GC Thread#0" [stack: 0x00000016a6f00000,0x00000016a7000000] [id=17948]
+  0x00000165d3f7e990 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000016a7000000,0x00000016a7100000] [id=15004]
+  0x00000165d3f819f0 ConcurrentGCThread "G1 Conc#0" [stack: 0x00000016a7100000,0x00000016a7200000] [id=15284]
 
-[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd56a3daf7]
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff1b13daf7]
 
 VM state: not at safepoint (not fully initialized)
 
 VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
-[0x000002ebc9b282c0] Heap_lock - owner thread: 0x000002ebc9b2c470
+[0x00000165d3f395a0] Heap_lock - owner thread: 0x00000165d3f3ba70
 
 Heap address: 0x00000000c2c00000, size: 980 MB, Compressed Oops mode: 32-bit
 
@@ -94,13 +94,13 @@ Heap:
  garbage-first heap   total 0K, used 0K [0x00000000c2c00000, 0x0000000100000000)
   region size 1024K, 0 young (0K), 0 survivors (0K)
 
-[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd56e20db9]
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff1b520db9]
 
 GC Heap History (0 events):
 No events
 
 Dll operation events (1 events):
-Event: 0.016 Loaded shared library C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\java.dll
+Event: 0.021 Loaded shared library C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\java.dll
 
 Deoptimization events (0 events):
 No events
@@ -122,46 +122,46 @@ No events
 
 
 Dynamic libraries:
-0x00007ff7a9900000 - 0x00007ff7a990e000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\javaw.exe
-0x00007ffdb9310000 - 0x00007ffdb9524000 	C:\WINDOWS\SYSTEM32\ntdll.dll
-0x00007ffdb7bd0000 - 0x00007ffdb7c92000 	C:\WINDOWS\System32\KERNEL32.DLL
-0x00007ffdb6710000 - 0x00007ffdb6ab3000 	C:\WINDOWS\System32\KERNELBASE.dll
-0x00007ffdb6c60000 - 0x00007ffdb6d71000 	C:\WINDOWS\System32\ucrtbase.dll
-0x00007ffd9e660000 - 0x00007ffd9e677000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\jli.dll
-0x00007ffdb7830000 - 0x00007ffdb79db000 	C:\WINDOWS\System32\USER32.dll
-0x00007ffdb6df0000 - 0x00007ffdb6e16000 	C:\WINDOWS\System32\win32u.dll
-0x00007ffdb8ed0000 - 0x00007ffdb8ef9000 	C:\WINDOWS\System32\GDI32.dll
-0x00007ffdb6ac0000 - 0x00007ffdb6bd9000 	C:\WINDOWS\System32\gdi32full.dll
-0x00007ffdb7050000 - 0x00007ffdb70ea000 	C:\WINDOWS\System32\msvcp_win.dll
-0x00007ffd8f610000 - 0x00007ffd8f629000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\VCRUNTIME140.dll
-0x00007ffd8bfb0000 - 0x00007ffd8c23e000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_270f70857386168e\COMCTL32.dll
-0x00007ffdb9220000 - 0x00007ffdb92c7000 	C:\WINDOWS\System32\msvcrt.dll
-0x00007ffdb8b40000 - 0x00007ffdb8b71000 	C:\WINDOWS\System32\IMM32.DLL
-0x00007ffd9e650000 - 0x00007ffd9e65c000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\vcruntime140_1.dll
-0x00007ffd7ec00000 - 0x00007ffd7ec91000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\msvcp140.dll
-0x00007ffd56750000 - 0x00007ffd57398000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\server\jvm.dll
-0x00007ffdb79f0000 - 0x00007ffdb7a9e000 	C:\WINDOWS\System32\ADVAPI32.dll
-0x00007ffdb8f60000 - 0x00007ffdb9004000 	C:\WINDOWS\System32\sechost.dll
-0x00007ffdb7ab0000 - 0x00007ffdb7bc7000 	C:\WINDOWS\System32\RPCRT4.dll
-0x00007ffdb12f0000 - 0x00007ffdb12f9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
-0x00007ffdb8e50000 - 0x00007ffdb8ec1000 	C:\WINDOWS\System32\WS2_32.dll
-0x00007ffd99390000 - 0x00007ffd993c4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
-0x00007ffdaef90000 - 0x00007ffdaef9a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
-0x00007ffdb5760000 - 0x00007ffdb5778000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
-0x00007ffdb1080000 - 0x00007ffdb108a000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\jimage.dll
-0x00007ffdb4140000 - 0x00007ffdb436e000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
-0x00007ffdb8580000 - 0x00007ffdb8909000 	C:\WINDOWS\System32\combase.dll
-0x00007ffdb90b0000 - 0x00007ffdb9187000 	C:\WINDOWS\System32\OLEAUT32.dll
-0x00007ffdaefc0000 - 0x00007ffdaeff2000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
-0x00007ffdb6be0000 - 0x00007ffdb6c5b000 	C:\WINDOWS\System32\bcryptPrimitives.dll
-0x00007ffd9e5a0000 - 0x00007ffd9e5c5000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\java.dll
+0x00007ff7c3b40000 - 0x00007ff7c3b4e000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\javaw.exe
+0x00007fff5a7b0000 - 0x00007fff5a9c4000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007fff59080000 - 0x00007fff59142000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007fff58170000 - 0x00007fff58513000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007fff57cf0000 - 0x00007fff57e01000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007fff461a0000 - 0x00007fff461b7000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\jli.dll
+0x00007fff59640000 - 0x00007fff597eb000 	C:\WINDOWS\System32\USER32.dll
+0x00007fff57fd0000 - 0x00007fff57ff6000 	C:\WINDOWS\System32\win32u.dll
+0x00007fff58810000 - 0x00007fff58839000 	C:\WINDOWS\System32\GDI32.dll
+0x00007fff57e10000 - 0x00007fff57f29000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007fff57f30000 - 0x00007fff57fca000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007fff46ac0000 - 0x00007fff46ad9000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\VCRUNTIME140.dll
+0x00007fff44280000 - 0x00007fff4450e000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_270f70857386168e\COMCTL32.dll
+0x00007fff58ed0000 - 0x00007fff58f77000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007fff58780000 - 0x00007fff587b1000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007fff48450000 - 0x00007fff4845c000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\vcruntime140_1.dll
+0x00007fff202b0000 - 0x00007fff20341000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\msvcp140.dll
+0x00007fff1ae50000 - 0x00007fff1ba98000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\server\jvm.dll
+0x00007fff59280000 - 0x00007fff5932e000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007fff59330000 - 0x00007fff593d4000 	C:\WINDOWS\System32\sechost.dll
+0x00007fff58840000 - 0x00007fff58957000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007fff372e0000 - 0x00007fff372e9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007fff593e0000 - 0x00007fff59451000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007fff503b0000 - 0x00007fff503e4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007fff4eb40000 - 0x00007fff4eb4a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007fff56360000 - 0x00007fff56378000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007fff33410000 - 0x00007fff3341a000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\jimage.dll
+0x00007fff57450000 - 0x00007fff5767e000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007fff599a0000 - 0x00007fff59d29000 	C:\WINDOWS\System32\combase.dll
+0x00007fff5a690000 - 0x00007fff5a767000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007fff57300000 - 0x00007fff57332000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007fff57c70000 - 0x00007fff57ceb000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007fff21030000 - 0x00007fff21055000 	C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\java.dll
 
 dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
 symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_270f70857386168e;C:\Users\Admin\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre\bin\server
 
 VM Arguments:
 jvm_args: --module-path=D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib --add-modules=javafx.controls,javafx.fxml,javafx.swing,javafx.graphics,javafx.web -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
-java_command: hust.soict.dsai.aims.screen.CartScreen
+java_command: hust.soict.dsai.aims.screen.test
 java_class_path (initial): C:\Users\Admin\eclipse-workspace\AimsProject\bin;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.base.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.controls.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.fxml.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.graphics.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.media.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.swing.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.web.jar;C:\Program Files\Java\openjfx-20.0.1_windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx-swt.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.controls.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.fxml.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.graphics.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.media.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.swing.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.web.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx.base.jar;D:\Downloads\openjfx-20.0.1_monocle-windows-x64_bin-sdk\javafx-sdk-20.0.1\lib\javafx-swt.jar
 Launcher Type: SUN_STANDARD
 
@@ -208,12 +208,12 @@ TEMP=C:\Users\Admin\AppData\Local\Temp
 
 OS:
  Windows 11 , 64 bit Build 22621 (10.0.22621.1778)
-OS uptime: 1 days 8:17 hours
+OS uptime: 0 days 6:58 hours
 
 CPU: total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 122 stepping 1 microcode 0x34, cx8, cmov, fxsr, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, tsc, tscinvbit, aes, erms, clmul, sha, clflush, clflushopt
 
-Memory: 4k page, system-wide physical 3919M (296M free)
-TotalPageFile size 10397M (AvailPageFile size 35M)
+Memory: 4k page, system-wide physical 3919M (342M free)
+TotalPageFile size 11064M (AvailPageFile size 29M)
 current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
 current process commit charge ("private bytes"): 51M, peak: 113M
 

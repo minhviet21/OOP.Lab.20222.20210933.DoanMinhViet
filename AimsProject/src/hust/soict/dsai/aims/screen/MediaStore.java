@@ -10,24 +10,33 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.naming.LimitExceededException;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 import hust.soict.dsai.aims.media.Track;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.ButtonBar.ButtonData;
 
 public class MediaStore extends JPanel {
 	private Media media;
 	private Cart cart;
+	JButton btnPlay = new JButton("Play");
+	JButton btnAdd = new JButton("Add to cart");
 
 	public MediaStore(Media media, Cart cart) {		
 		this.media = media;
@@ -43,13 +52,10 @@ public class MediaStore extends JPanel {
 		
 		JPanel container = new JPanel();
 		container.setLayout(new FlowLayout(FlowLayout.CENTER));
-		
 		ButtonListener btnListener = new ButtonListener();
-		JButton btnAdd = new JButton("Add to cart");
 		container.add(btnAdd);
 		btnAdd.addActionListener(btnListener);
 		if (media instanceof Playable) {
-			JButton btnPlay = new JButton("Play");
 			container.add(btnPlay);
 			btnPlay.addActionListener(btnListener);
 		}
@@ -66,29 +72,25 @@ public class MediaStore extends JPanel {
 	private class ButtonListener implements ActionListener {
 	    public void actionPerformed(ActionEvent e) {
 	        if (e.getActionCommand().equals("Add to cart")) {
-				cart.addMedia(media);
+					try {
+						cart.addMedia(media);
+					} catch (LimitExceededException e1) {
+						e1.printStackTrace();
+					}
+				
 	        }
 	        else if (e.getActionCommand().equals("Play") ) {
-	            ((Playable) media).play();
+	        	JDialog plays = new JDialog();
+	        	JTextArea label = new JTextArea(((Playable) media).play());
+	        	plays.setLayout(new FlowLayout());
+	        	plays.setTitle("Playing");
+	        	plays.add(label);
+		
+				plays.add(new JLabel());
+				plays.pack();
+				plays.setVisible(true);
 	        }
 	    }
-	}
-	
-	public static void main(String[] args) {
-		Cart cart = new Cart();
-		CompactDisc cd1 = new CompactDisc("Thriller", "Pop", "Michael Jackson", "John Landis", 42, 14.99f,
-				new ArrayList<>(Arrays.asList(new Track("Wanna Be Startin' Somethin'", 6),
-						new Track("Thriller", 5),
-						new Track("Beat It", 4),
-						new Track("Billie Jean", 5))));
-		MediaStore ms = new MediaStore(cd1, cart);
-		
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400, 200);
-		frame.getContentPane().setLayout(new BorderLayout());
-		frame.getContentPane().add(ms, BorderLayout.CENTER);
-		frame.setVisible(true);
 	}
 
 }

@@ -40,10 +40,15 @@ public class CompactDisc extends Disc implements Playable{
 			System.out.println("Track is not in the list");
 		}
 	}
-	public void play() {
+	public String play() {
+		StringBuilder play0 = new StringBuilder();
+		String play1;
 		for (Track track: tracks) {
-			track.play();
+			play0.append(track.play());
+			play0.append("\n");
 		}
+		play1 = play0.toString();
+		return play1;
 	}
 	@Override
     public String toString() {

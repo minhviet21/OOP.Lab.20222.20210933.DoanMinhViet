@@ -24,16 +24,19 @@
                     <items>
                         <Menu mnemonicParsing="false" text="Update Store">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Add Book" />
-                              <MenuItem mnemonicParsing="false" text="Add CD" />
-                              <MenuItem mnemonicParsing="false" text="Add DVD" />
+                              <MenuItem mnemonicParsing="false" onAction="#menuOptionAction" text="Add Book" />
+                              <MenuItem mnemonicParsing="false" onAction="#menuOptionAction" text="Add CD" />
+                              <MenuItem mnemonicParsing="false" onAction="#menuOptionAction" text="Add DVD" />
                            </items>
                         </Menu>
-                        <MenuItem mnemonicParsing="false" text="View Store" />
-                        <MenuItem mnemonicParsing="false" text="View Cart" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuOptionAction" text="View Store" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuOptionAction" text="View Cart" />
                     </items>
                   </Menu>
               </menus>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </MenuBar>
          </children>
       </VBox>
@@ -72,8 +75,8 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
-            <Button fx:id="btnPlay" mnemonicParsing="false" text="Play" />
+            <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemoveAction" text="Remove" />
+            <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayAction" text="Play" />
          </children>
       </VBox>
    </center>
@@ -100,7 +103,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#btnPlaceOrderAction" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

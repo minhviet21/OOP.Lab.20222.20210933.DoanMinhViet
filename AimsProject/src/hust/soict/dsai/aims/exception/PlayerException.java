@@ -1,9 +1,9 @@
 package hust.soict.dsai.aims.exception;
 
-public class PlayerException {
+public class PlayerException extends Exception{
 
-	public PlayerException() {
-		// TODO Auto-generated constructor stub
+	public PlayerException(String message) {
+		super(message);
 	}
 
 }

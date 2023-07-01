@@ -33,8 +33,17 @@ import hust.soict.dsai.aims.store.Store;
 public class StoreScreen extends JFrame {
 	private Store store;
 	static Cart cart = new Cart();
+	private int[] frameSize = {1024, 768};
+
+    public int[] getFrameSize() {
+        return frameSize;
+    }
+
+    public void setFrameSize(int[] frameSize) {
+        this.frameSize = frameSize;
+    }
 	
-	public StoreScreen(Store store) {
+	public StoreScreen(Store store, Cart cart2) {
 		this.store = store;
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
@@ -44,7 +53,8 @@ public class StoreScreen extends JFrame {
 		
 		setVisible(true);
 		setTitle("Store");
-		setSize(1024, 768);
+		setSize(1300, 700);
+		setLocationRelativeTo(null);
 	}
 	
 	JPanel createNorth() {
@@ -55,31 +65,59 @@ public class StoreScreen extends JFrame {
 		return north;
 	}
 	JMenuBar createMenuBar() {
-		JMenu menu = new JMenu("Option");
+		Store store = this.store;
+		Cart cart = this.cart;
+		JMenu menu = new JMenu("Options");
 		JMenu smUpdateStore = new JMenu("Update Store");
-		
-		JMenuItem mnAddBook = new JMenuItem("Add Book");
-		mnAddBook.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            AddBookToStoreScreen addBookScreen = new AddBookToStoreScreen(store);
-	            /*addBookScreen.setVisible(true);*/
-	        }
-	    });
-		
-		JMenuItem mnAddCD = new JMenuItem("Add CD");
-		JMenuItem mnAddDVD = new JMenuItem("Add DVD");
-		smUpdateStore.add(mnAddBook);
-		smUpdateStore.add(mnAddCD);
-		smUpdateStore.add(mnAddDVD);
-		
+		JMenuItem addBookScreen = new JMenuItem("Add Book");
+		addBookScreen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new AddBookToStoreScreen(store, cart);
+				dispose();
+			}			
+		});
+		smUpdateStore.add(addBookScreen);
+		JMenuItem addCDScreen = new JMenuItem("Add CD");
+		addCDScreen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new AddCompactDiscToStoreScreen(store, cart);
+				dispose();
+			}			
+		});
+		smUpdateStore.add(addCDScreen);
+		JMenuItem addDVDScreen = new JMenuItem("Add DVD");
+		addDVDScreen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new AddDigitalVideoDiscToStoreScreen(store, cart);
+				dispose();
+			}			
+		});
+		smUpdateStore.add(addDVDScreen);
 		menu.add(smUpdateStore);
-		menu.add(new JMenuItem("View store"));
-		menu.add(new JMenuItem("View cart"));
-		
+		JMenuItem viewStoreScreen = new JMenuItem("View Store");
+		viewStoreScreen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new StoreScreen(store, cart);
+				dispose();
+			}			
+		});
+		menu.add(viewStoreScreen);
+		JMenuItem viewCartScreen = new JMenuItem("View Cart");
+		viewCartScreen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new CartScreen(store, cart);
+				dispose();
+			}			
+		});
+		menu.add(viewCartScreen);
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
 		menuBar.add(menu);
-
 		return menuBar;
 	}
 	
@@ -91,14 +129,21 @@ public class StoreScreen extends JFrame {
 		title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 50));
 		title.setForeground(Color.CYAN);
 		
-		JButton cart = new JButton("View cart");
-		cart.setPreferredSize(new Dimension(100, 50));
-		cart.setMaximumSize(new Dimension(100, 50));
+		JButton viewCart = new JButton("View cart");
+		viewCart.setPreferredSize(new Dimension(100, 50));
+		viewCart.setMaximumSize(new Dimension(100, 50));
+		viewCart.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new CartScreen(store, cart);
+				dispose();				
+			}			
+		});
 		
 		header.add(Box.createRigidArea(new Dimension(10, 10)));
 		header.add(title);
 		header.add(Box.createHorizontalGlue());
-		header.add(cart);
+		header.add(viewCart);
 		header.add(Box.createRigidArea(new Dimension(10, 10)));
 		
 		return header;
@@ -106,10 +151,10 @@ public class StoreScreen extends JFrame {
 	
 	JPanel createCenter() {
 		JPanel center = new JPanel();
-		center.setLayout(new GridLayout(3, 3, 2, 2));
+		center.setLayout(new GridLayout(4,5));
 		
 		ArrayList<Media> mediaInStore = store.getItemsInStore();
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < mediaInStore.size(); i++) {
 			MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
 			center.add(cell);
 		}
@@ -118,42 +163,8 @@ public class StoreScreen extends JFrame {
 	}
 
 	
-	public static void main(String[] args) {
-		Store store = new Store();
-		
-		Book book1 = new Book("The Great Gatsby", "Classic", 12.99f, Arrays.asList("F. Scott Fitzgerald"));
-		Book book2 = new Book("The Chronicles of Narnia", "Fantasy", 20.99f, Arrays.asList("C.S. Lewis"));
-		Book book3 = new Book("Pride and Prejudice", "Romance", 14.99f, Arrays.asList("Jane Austen"));
-		CompactDisc cd1 = new CompactDisc("Thriller", "Pop", "Michael Jackson", "John Landis", 42, 14.99f,
-				new ArrayList<>(Arrays.asList(new Track("Wanna Be Startin' Somethin'", 6),
-						new Track("Thriller", 5),
-						new Track("Beat It", 4),
-						new Track("Billie Jean", 5))));
-		CompactDisc cd2 = new CompactDisc("Back in Black", "Rock", "AC/DC", "Robert John 'Mutt' Lange", 42, 13.99f,
-				new ArrayList<>(Arrays.asList(new Track("Hells Bells", 5),
-						new Track("Shoot to Thrill", 5),
-						new Track("Back in Black", 5),
-						new Track("You Shook Me All Night Long", 4))));
-		CompactDisc cd3 = new CompactDisc("1989", "Pop", "Taylor Swift", "Joseph Kahn", 48, 15.99f,
-				new ArrayList<>(Arrays.asList(new Track("Welcome to New York", 3),
-				new Track("Blank Space", 4),
-				new Track("Style", 4),
-				new Track("Shake It Off", 4))));
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Dark Knight", "Action", "Christopher Nolan", 152, 12.99f);
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("The Shawshank Redemption", "Drama", "Frank Darabont", 142, 9.99f);
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Jurassic Park", "Science Fiction", "Steven Spielberg", 127, 8.99f);
-		
-		store.addMedia(book1);
-        store.addMedia(book2);
-        store.addMedia(book3);
-        store.addMedia(cd1);
-        store.addMedia(cd2);
-        store.addMedia(cd3);
-        store.addMedia(dvd1);
-        store.addMedia(dvd2);
-        store.addMedia(dvd3);
-        new StoreScreen(store);
-        new CartScreen(cart);
-    
-	}
+	
+
 }
+
+
